@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. FLOWER PETALS SHOWER MODE TOGGLE
   const petalToggleBtn = document.getElementById('petalToggleBtn');
+  const petalToggleBtnMobile = document.getElementById('petalToggleBtnMobile');
   const petalModes = ['rose', 'marigold', 'gold', 'off'];
   const petalLabels = {
     rose: '🌸 Rose Shower',
@@ -83,14 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   let currentPetalIdx = 0;
 
-  if (petalToggleBtn && window.petalCanvasInstance) {
-    petalToggleBtn.addEventListener('click', () => {
-      currentPetalIdx = (currentPetalIdx + 1) % petalModes.length;
-      const nextMode = petalModes[currentPetalIdx];
-      window.petalCanvasInstance.setMode(nextMode);
-      petalToggleBtn.textContent = petalLabels[nextMode];
-    });
+  function cyclePetalMode() {
+    if (!window.petalCanvasInstance) return;
+    currentPetalIdx = (currentPetalIdx + 1) % petalModes.length;
+    const nextMode = petalModes[currentPetalIdx];
+    window.petalCanvasInstance.setMode(nextMode);
+    if (petalToggleBtn) petalToggleBtn.textContent = petalLabels[nextMode];
+    if (petalToggleBtnMobile) petalToggleBtnMobile.textContent = petalLabels[nextMode];
   }
+
+  if (petalToggleBtn) petalToggleBtn.addEventListener('click', cyclePetalMode);
+  if (petalToggleBtnMobile) petalToggleBtnMobile.addEventListener('click', cyclePetalMode);
 
   // 4. SHUBH MUHURAT COUNTDOWN TIMER
   // Wedding Date: Feb 2, 2027, 18:45:00 IST

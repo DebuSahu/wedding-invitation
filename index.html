@@ -48,10 +48,15 @@
         <span class="seal-text">शुभ विवाह</span>
       </div>
 
-      <p class="entrance-tagline">|| ॐ श्री गणेशाय नमः ||</p>
-      <h1 class="entrance-couple-name">Divyanshu & Sapna</h1>
-      <p style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 24px; font-style: italic;">
-        Cordially request the pleasure of your august presence at their Royal Wedding Celebration
+      <p class="entrance-tagline devanagari-font">॥ ॐ श्री गणेशाय नमः ॥</p>
+      <div class="entrance-shubh-vivaha-tag">✦ ROYAL VIVAHA INVITATION ✦</div>
+      <h1 class="entrance-couple-name gold-shimmer-text">
+        <span>Divyanshu</span>
+        <span class="ampersand-ornament">&amp;</span>
+        <span>Sapna</span>
+      </h1>
+      <p class="entrance-subtitle-text">
+        Cordially request the honour of your auspicious presence and blessings on their Holy Matrimony
       </p>
 
       <button class="entrance-btn" id="enterInviteBtn">
@@ -61,8 +66,8 @@
         </svg>
       </button>
       
-      <p style="font-size: 0.85rem; color: var(--gold-light); margin-top: 14px; opacity: 0.8;">
-        (Click to unseal, play ceremonial Shehnai music & enter)
+      <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 12px; opacity: 0.85;">
+        (Touch to unseal, play ceremonial Shehnai &amp; enter)
       </p>
     </div>
   </div>
@@ -74,7 +79,7 @@
     <div class="nav-container">
       <a href="#home" class="nav-monogram">
         <div class="monogram-seal">D & S</div>
-        <div>
+        <div class="monogram-titles">
           <span class="monogram-text">Divyanshu & Sapna</span>
           <span class="monogram-subtitle">2 February 2027</span>
         </div>
@@ -104,13 +109,13 @@
           <span id="musicStatusText">🪈 Shehnai Dhun</span>
         </button>
 
-        <!-- Petal Shower Toggle -->
-        <button class="nav-action-btn" id="petalToggleBtn" title="Switch Petal Shower Mode">
+        <!-- Petal Shower Toggle (Desktop) -->
+        <button class="nav-action-btn nav-desktop-only" id="petalToggleBtn" title="Switch Petal Shower Mode">
           🌸 Rose Shower
         </button>
 
-        <!-- RSVP Quick Link -->
-        <a href="#rsvp" class="royal-btn-gold" style="padding: 6px 16px; font-size: 0.75rem;">
+        <!-- RSVP Quick Link (Desktop) -->
+        <a href="#rsvp" class="royal-btn-gold nav-desktop-only" style="padding: 6px 16px; font-size: 0.75rem;">
           RSVP
         </a>
 
@@ -123,15 +128,25 @@
 
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobileDrawer">
-      <a href="#home" class="mobile-nav-link">Patrika</a>
-      <a href="#countdown" class="mobile-nav-link">Muhurat</a>
-      <a href="#couple" class="mobile-nav-link">The Couple</a>
-      <a href="#ceremonies" class="mobile-nav-link">Ceremonies</a>
-      <a href="#saatphere" class="mobile-nav-link">Saat Phere</a>
-      <a href="#venue" class="mobile-nav-link">Palace Guide</a>
-      <a href="#gallery" class="mobile-nav-link">Moments</a>
-      <a href="#diya" class="mobile-nav-link">Light Diya</a>
-      <a href="#rsvp" class="mobile-nav-link">RSVP</a>
+      <a href="#home" class="mobile-nav-link">Patrika (निमंत्रण पत्र)</a>
+      <a href="#countdown" class="mobile-nav-link">Muhurat (शुभ मुहूर्त)</a>
+      <a href="#couple" class="mobile-nav-link">The Couple (वर-वधू)</a>
+      <a href="#ceremonies" class="mobile-nav-link">Ceremonies (कार्यक्रम)</a>
+      <a href="#saatphere" class="mobile-nav-link">Saat Phere (सप्तपदी)</a>
+      <a href="#venue" class="mobile-nav-link">Venues Guide (स्थल मार्गदर्शिका)</a>
+      <a href="#gallery" class="mobile-nav-link">Moments (स्मृतियाँ)</a>
+      <a href="#diya" class="mobile-nav-link">Light a Diya (दीप प्रज्वलन)</a>
+      <a href="#rsvp" class="mobile-nav-link">RSVP (उपस्थिति)</a>
+
+      <!-- Quick Actions inside Mobile Drawer -->
+      <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px;">
+        <button class="nav-action-btn" id="petalToggleBtnMobile" style="width: 100%; justify-content: center;">
+          🌸 Switch Petal Shower
+        </button>
+        <a href="#rsvp" class="royal-btn-gold" style="width: 100%; justify-content: center; text-align: center;">
+          💌 Send RSVP & Blessings
+        </a>
+      </div>
     </div>
   </header>
 
