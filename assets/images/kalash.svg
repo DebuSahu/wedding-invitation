@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="kalashGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2B2" />
+      <stop offset="30%" stop-color="#E5C158" />
+      <stop offset="60%" stop-color="#C59A3F" />
+      <stop offset="100%" stop-color="#8F6218" />
+    </linearGradient>
+    <linearGradient id="leafGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#81C784" />
+      <stop offset="50%" stop-color="#388E3C" />
+      <stop offset="100%" stop-color="#1B5E20" />
+    </linearGradient>
+    <linearGradient id="coconutBrown" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A1887F" />
+      <stop offset="50%" stop-color="#6D4C41" />
+      <stop offset="100%" stop-color="#3E2723" />
+    </linearGradient>
+  </defs>
+
+  <!-- Coconut (Shrifal) on Top -->
+  <path d="M80 32 C65 52, 60 70, 80 82 C100 70, 95 52, 80 32 Z" fill="url(#coconutBrown)" stroke="#E5C158" stroke-width="1.2"/>
+  <!-- Tilak on Coconut -->
+  <path d="M78 50 Q80 44 82 50 L81 65 L79 65 Z" fill="#D32F2F"/>
+  <circle cx="80" cy="69" r="2" fill="#FFEB3B"/>
+
+  <!-- Mango Leaves (Amra Pallava) fan out -->
+  <!-- Left Outer Leaf -->
+  <path d="M72 82 C50 68, 30 75, 25 88 C38 90, 58 87, 72 82 Z" fill="url(#leafGreen)" stroke="#C59A3F" stroke-width="0.8"/>
+  <!-- Left Inner Leaf -->
+  <path d="M76 82 C60 60, 48 58, 42 70 C52 78, 66 81, 76 82 Z" fill="url(#leafGreen)" stroke="#C59A3F" stroke-width="0.8"/>
+  <!-- Center Leaf Behind Coconut -->
+  <path d="M80 40 C75 20, 80 10, 80 8 C80 10, 85 20, 80 40 Z" fill="url(#leafGreen)" stroke="#C59A3F" stroke-width="0.8"/>
+  <!-- Right Inner Leaf -->
+  <path d="M84 82 C100 60, 112 58, 118 70 C108 78, 94 81, 84 82 Z" fill="url(#leafGreen)" stroke="#C59A3F" stroke-width="0.8"/>
+  <!-- Right Outer Leaf -->
+  <path d="M88 82 C110 68, 130 75, 135 88 C122 90, 102 87, 88 82 Z" fill="url(#leafGreen)" stroke="#C59A3F" stroke-width="0.8"/>
+
+  <!-- Kalash Pot (Lota / Pitcher) -->
+  <!-- Neck Rim -->
+  <ellipse cx="80" cy="85" rx="30" ry="6" fill="url(#kalashGold)" stroke="#FFF2B2" stroke-width="1.5"/>
+  <ellipse cx="80" cy="89" rx="26" ry="4" fill="#C59A3F"/>
+
+  <!-- Body -->
+  <path d="M54 89 C48 100, 32 118, 32 138 C32 165, 55 175, 80 175 C105 175, 128 165, 128 138 C128 118, 112 100, 106 89 Z" fill="url(#kalashGold)" stroke="#FFF2B2" stroke-width="1.5"/>
+
+  <!-- Ornate Sacred Swastik / Om Pattern on Pot Body -->
+  <g stroke="#D32F2F" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Center Swastik -->
+    <path d="M80 120 L80 144"/>
+    <path d="M68 132 L92 132"/>
+    <path d="M80 120 L90 120"/>
+    <path d="M80 144 L70 144"/>
+    <path d="M68 132 L68 122"/>
+    <path d="M92 132 L92 142"/>
+    <!-- 4 Dots (Chandan & Kumkum) -->
+    <circle cx="74" cy="126" r="1.5" fill="#D32F2F"/>
+    <circle cx="86" cy="126" r="1.5" fill="#D32F2F"/>
+    <circle cx="74" cy="138" r="1.5" fill="#D32F2F"/>
+    <circle cx="86" cy="138" r="1.5" fill="#D32F2F"/>
+  </g>
+
+  <!-- Sacred Thread (Mauli / Kalava) around neck -->
+  <path d="M54 94 Q80 102 106 94" fill="none" stroke="#D32F2F" stroke-width="3" stroke-dasharray="6 3"/>
+  <path d="M55 98 Q80 106 105 98" fill="none" stroke="#FFD54F" stroke-width="2"/>
+
+  <!-- Base of Kalash -->
+  <path d="M62 174 C62 182, 98 182, 98 174 Z" fill="url(#kalashGold)" stroke="#8F6218" stroke-width="1.5"/>
+</svg>

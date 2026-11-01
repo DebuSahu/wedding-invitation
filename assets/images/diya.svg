@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF9C4" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#FFD54F" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#FF6D00" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FF3D00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flameInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#FFEE58"/>
+      <stop offset="70%" stop-color="#FF9800"/>
+      <stop offset="100%" stop-color="#DD2C00"/>
+    </linearGradient>
+    <linearGradient id="brassPot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="40%" stop-color="#FFCA28"/>
+      <stop offset="75%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8D6E63"/>
+    </linearGradient>
+    <filter id="diyaGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Big Ambient Flame Glow (Behind) -->
+  <circle cx="80" cy="55" r="45" fill="url(#flameGlow)" opacity="0.85" class="diya-ambient-glow"/>
+
+  <!-- Flame Wick -->
+  <line x1="80" y1="80" x2="80" y2="70" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Outer Radiant Flame -->
+  <path d="M80 30 C72 45, 62 58, 68 72 C72 80, 88 80, 92 72 C98 58, 88 45, 80 30 Z" 
+        fill="url(#flameInner)" filter="url(#diyaGlow)" class="diya-flame-motion"/>
+
+  <!-- Core White-Hot Flame -->
+  <path d="M80 42 C76 52, 72 60, 75 68 C78 73, 82 73, 85 68 C88 60, 84 52, 80 42 Z" 
+        fill="#FFFFF0" opacity="0.95"/>
+
+  <!-- Brass Diya Body -->
+  <!-- Rim -->
+  <ellipse cx="80" cy="88" rx="46" ry="12" fill="url(#brassPot)" stroke="#FFF2B2" stroke-width="1.5"/>
+  <ellipse cx="80" cy="86" rx="42" ry="9" fill="#B28929"/>
+  <!-- Oil reservoir reflection -->
+  <ellipse cx="80" cy="87" rx="36" ry="6" fill="#8C6615"/>
+
+  <!-- Bowl / Base of Diya -->
+  <path d="M34 88 C34 110, 52 125, 80 125 C108 125, 126 110, 126 88 Z" fill="url(#brassPot)" stroke="#FFF2B2" stroke-width="1.2"/>
+
+  <!-- Ornate Engravings on Diya Bowl -->
+  <g stroke="#FFF2B2" stroke-width="1" fill="none" opacity="0.8">
+    <path d="M48 98 Q80 115 112 98"/>
+    <circle cx="60" cy="106" r="2" fill="#FFE082"/>
+    <circle cx="80" cy="111" r="2.5" fill="#FFE082"/>
+    <circle cx="100" cy="106" r="2" fill="#FFE082"/>
+  </g>
+
+  <!-- Pedestal Foot -->
+  <path d="M65 124 L62 135 L98 135 L95 124 Z" fill="url(#brassPot)" stroke="#D4AF37" stroke-width="1"/>
+  <ellipse cx="80" cy="135" rx="22" ry="4" fill="url(#brassPot)" stroke="#FFF2B2" stroke-width="1"/>
+</svg>

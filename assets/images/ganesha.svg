@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082" />
+      <stop offset="30%" stop-color="#FFD54F" />
+      <stop offset="50%" stop-color="#FFC107" />
+      <stop offset="70%" stop-color="#FFA000" />
+      <stop offset="100%" stop-color="#FF8F00" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Aura Circle -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.6"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.8"/>
+  
+  <!-- Lord Ganesha Traditional Artistic Silhouette -->
+  <g fill="url(#goldGrad)" filter="url(#glow)">
+    <!-- Crown / Mukut -->
+    <path d="M85 30 L100 15 L115 30 L110 42 L90 42 Z"/>
+    <circle cx="100" cy="20" r="2.5" fill="#FFF8E1"/>
+    <path d="M92 34 Q100 28 108 34" fill="none" stroke="#FFF8E1" stroke-width="1.5"/>
+    <path d="M88 42 Q100 38 112 42" fill="none" stroke="#FFE082" stroke-width="1.5"/>
+    
+    <!-- Big Ear Left -->
+    <path d="M88 48 C70 45, 55 58, 56 75 C57 90, 72 96, 85 92 C82 82, 83 62, 88 48 Z"/>
+    <path d="M68 62 C65 72, 70 82, 78 85" fill="none" stroke="#FFE082" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Small Ear Right / Broken Tusk Side -->
+    <path d="M112 48 C128 46, 142 58, 140 74 C138 86, 126 94, 115 91 C117 80, 117 62, 112 48 Z"/>
+    <path d="M130 62 C133 70, 128 80, 122 84" fill="none" stroke="#FFE082" stroke-width="1.2" opacity="0.7"/>
+
+    <!-- Forehead & Tilak -->
+    <path d="M85 45 C95 43, 105 43, 115 45 C116 58, 115 68, 112 76 C105 77, 95 77, 88 76 C85 68, 84 58, 85 45 Z"/>
+    <!-- Sacred Trishul / Tilak on Forehead -->
+    <path d="M98 48 L100 60 L102 48 Q100 46 98 48 Z" fill="#D32F2F"/>
+    <circle cx="100" cy="64" r="2" fill="#D32F2F"/>
+    <path d="M94 54 Q100 58 106 54" fill="none" stroke="#FFF8E1" stroke-width="1.2"/>
+
+    <!-- Eyes -->
+    <path d="M89 62 Q93 60 97 63" fill="none" stroke="#5D4037" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M103 63 Q107 60 111 62" fill="none" stroke="#5D4037" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Trunk (Vakratunda - curving gracefully to the left with Modak) -->
+    <path d="M96 76 C94 88, 92 100, 95 112 C98 124, 106 130, 114 128 C124 125, 126 112, 118 105 C112 100, 106 102, 104 107 C102 112, 107 117, 111 116 C113 115, 114 112, 112 110" fill="none" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M96 76 C94 88, 92 100, 95 112 C98 124, 106 130, 114 128 C124 125, 126 112, 118 105 C112 100, 106 102, 104 107 C102 112, 107 117, 111 116 C113 115, 114 112, 112 110" fill="none" stroke="#FFF8E1" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Modak / Laddu in Trunk / Hand -->
+    <circle cx="118" cy="107" r="4.5" fill="#FFE082"/>
+    <circle cx="118" cy="107" r="2.5" fill="#FFB300"/>
+
+    <!-- Tusk (Ekdanta) -->
+    <path d="M92 84 L84 89 L92 89 Z" fill="#FFFFFF"/>
+    <path d="M108 84 L113 87 L108 88 Z" fill="#FFFFFF"/>
+
+    <!-- Blessed Hands & Body -->
+    <path d="M78 95 C68 105, 68 125, 82 135 C95 142, 115 142, 126 132 C135 122, 134 104, 124 95" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+    
+    <!-- Abhaya Mudra (Right Hand of Blessing) -->
+    <circle cx="68" cy="108" r="8" fill="url(#goldGrad)" opacity="0.9"/>
+    <!-- Sacred Om in palm -->
+    <text x="68" y="111" font-size="8" font-family="serif" text-anchor="middle" fill="#78101C" font-weight="bold">ॐ</text>
+
+    <!-- Lotus Base -->
+    <path d="M60 155 C75 145, 125 145, 140 155 C125 165, 75 165, 60 155 Z" fill="url(#goldGrad)"/>
+    <path d="M70 153 C85 143, 115 143, 130 153" fill="none" stroke="#FFF8E1" stroke-width="1.5"/>
+    <path d="M80 156 Q100 168 120 156" fill="none" stroke="#FFE082" stroke-width="1.5"/>
+    <path d="M90 150 Q100 140 110 150" fill="url(#goldGrad)"/>
+  </g>
+</svg>

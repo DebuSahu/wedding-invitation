@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Royal Wedding of Divyanshu & Sapna | Shubh Vivaha Patrika</title>
+  <meta name="description" content="You are cordially invited to celebrate the royal Hindu wedding and auspicious pheras of Divyanshu Sahu and Sapna Kushwaha at Gulmohar Guest House in Prayagraj and Reception at Hotel Surya Galaxy in Shuklaganj, Unnao.">
+  <meta property="og:title" content="The Royal Wedding of Divyanshu & Sapna">
+  <meta property="og:description" content="Experience the divine celebration, sacred pheras, and royal festivities of Divyanshu & Sapna in Prayagraj and Shuklaganj, Unnao.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon with Lord Ganesha Emblem -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/ganesha.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Floating Flower Petal & Gold Particle Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- ========================================================
+       1. ROYAL ENTRANCE / WAX SEAL OPENING CEREMONY
+       ======================================================== -->
+  <div class="royal-entrance-overlay" id="royalEntrance">
+    <!-- 3D Splitting Palace Gates -->
+    <div class="palace-gate-left">
+      <div class="gate-pattern">
+        <span class="gate-corner-rosette tl">❖</span>
+        <span class="gate-corner-rosette bl">❖</span>
+      </div>
+    </div>
+    <div class="palace-gate-right">
+      <div class="gate-pattern">
+        <span class="gate-corner-rosette tr">❖</span>
+        <span class="gate-corner-rosette br">❖</span>
+      </div>
+    </div>
+
+    <!-- Central Wax Seal & Unfold Action -->
+    <div class="entrance-seal-wrapper">
+      <div class="seal-ribbon"></div>
+      
+      <div class="royal-wax-seal seal-pulse-glow" id="waxSeal" title="Click to break the Royal Seal">
+        <img src="assets/images/ganesha.svg" alt="Lord Ganesha" class="seal-ganesha-icon">
+        <span class="seal-text">शुभ विवाह</span>
+      </div>
+
+      <p class="entrance-tagline">|| ॐ श्री गणेशाय नमः ||</p>
+      <h1 class="entrance-couple-name">Divyanshu & Sapna</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 24px; font-style: italic;">
+        Cordially request the pleasure of your august presence at their Royal Wedding Celebration
+      </p>
+
+      <button class="entrance-btn" id="enterInviteBtn">
+        <span>✨ Open Royal Invitation</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      
+      <p style="font-size: 0.85rem; color: var(--gold-light); margin-top: 14px; opacity: 0.8;">
+        (Click to unseal, play ceremonial Shehnai music & enter)
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. TOP STICKY ROYAL NAVIGATION BAR
+       ======================================================== -->
+  <header class="royal-nav-header">
+    <div class="nav-container">
+      <a href="#home" class="nav-monogram">
+        <div class="monogram-seal">D & S</div>
+        <div>
+          <span class="monogram-text">Divyanshu & Sapna</span>
+          <span class="monogram-subtitle">2 February 2027</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Patrika</a>
+        <a href="#countdown">Muhurat</a>
+        <a href="#couple">The Couple</a>
+        <a href="#ceremonies">Ceremonies</a>
+        <a href="#saatphere">Saat Phere</a>
+        <a href="#venue">Venues Guide</a>
+        <a href="#gallery">Moments</a>
+        <a href="#diya">Light Diya</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Ceremonial Shehnai Music Toggle -->
+        <button class="nav-action-btn music-toggle-btn" id="musicToggleBtn" title="Toggle Auspicious Shehnai & Tanpura Music">
+          <div class="soundwave-visualizer">
+            <span class="bar-1"></span>
+            <span class="bar-2"></span>
+            <span class="bar-3"></span>
+            <span class="bar-4"></span>
+          </div>
+          <span id="musicStatusText">🪈 Shehnai Dhun</span>
+        </button>
+
+        <!-- Petal Shower Toggle -->
+        <button class="nav-action-btn" id="petalToggleBtn" title="Switch Petal Shower Mode">
+          🌸 Rose Shower
+        </button>
+
+        <!-- RSVP Quick Link -->
+        <a href="#rsvp" class="royal-btn-gold" style="padding: 6px 16px; font-size: 0.75rem;">
+          RSVP
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <a href="#home" class="mobile-nav-link">Patrika</a>
+      <a href="#countdown" class="mobile-nav-link">Muhurat</a>
+      <a href="#couple" class="mobile-nav-link">The Couple</a>
+      <a href="#ceremonies" class="mobile-nav-link">Ceremonies</a>
+      <a href="#saatphere" class="mobile-nav-link">Saat Phere</a>
+      <a href="#venue" class="mobile-nav-link">Palace Guide</a>
+      <a href="#gallery" class="mobile-nav-link">Moments</a>
+      <a href="#diya" class="mobile-nav-link">Light Diya</a>
+      <a href="#rsvp" class="mobile-nav-link">RSVP</a>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       3. HERO SECTION: VIVAHA PATRIKA & GANESH INVOCATION
+       ======================================================== -->
+  <main id="home" class="hero-patrika-section">
+    <!-- Rotating Celestial Mandala Background -->
+    <img src="assets/images/mandala.svg" alt="Royal Mandala" class="hero-background-mandala spin-slow">
+
+    <div class="royal-container">
+      <!-- Auspicious Lord Ganesha Shloka -->
+      <div class="ganesh-invoc-wrapper">
+        <img src="assets/images/ganesha.svg" alt="Shree Ganesha" class="ganesha-hero-icon float-gentle">
+        <h2 class="shloka-sanskrit">
+          ॥ ॐ श्री गणेशाय नमः ॥<br>
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>
+          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+        </h2>
+        <p class="shloka-meaning">
+          "O Lord with the curved trunk and celestial radiance of a million suns, we seek your divine blessings to remove all obstacles and illuminate our sacred union forever."
+        </p>
+      </div>
+
+      <!-- The Grand Royal Patrika (Scroll Card) -->
+      <div class="patrika-card royal-card-hover">
+        <div class="patrika-jharokha-top"></div>
+        <span class="card-corner tl">❖</span>
+        <span class="card-corner tr">❖</span>
+        <span class="card-corner bl">❖</span>
+        <span class="card-corner br">❖</span>
+
+        <p class="patrika-invitation-intro">With the Divine Blessings of God & Our Beloved Ancestors</p>
+
+        <p class="patrika-family-names">
+          <strong>Smt. Savita Sahu & Shri Om Prakash Sahu</strong><br>
+          cordially invite you and your family to grace the auspicious wedding ceremony of their beloved son
+        </p>
+
+        <!-- Couple Name Showcase -->
+        <div class="couple-hero-display">
+          <div class="couple-name-box">
+            <h1 class="name gold-shimmer-text">Divyanshu</h1>
+            <p class="parentage">Son of Smt. Savita Sahu & Shri Om Prakash Sahu<br>Sahu Pariwar</p>
+          </div>
+
+          <div class="couple-wedding-knot">
+            <span class="knot-symbol">&</span>
+            <span class="knot-sub">WEDS</span>
+          </div>
+
+          <div class="couple-name-box">
+            <h1 class="name gold-shimmer-text">Sapna</h1>
+            <p class="parentage">Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha<br>Kushwaha Pariwar</p>
+          </div>
+        </div>
+
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">⚜</div>
+          <div class="line"></div>
+        </div>
+
+        <p style="font-size: 1.25rem; color: var(--silk-cream); margin-top: 24px;">
+          As two hearts unite in sacred love, we invite you to share our joy, partake in the auspicious festivities, and shower your heartfelt blessings upon the newlyweds.
+        </p>
+
+        <!-- Auspicious Date Pill -->
+        <div class="patrika-date-pill" style="flex-direction: column; gap: 8px; border-radius: 20px;">
+          <div>
+            <strong>Shubh Vivaha:</strong> Tuesday, 2nd February 2027 ✦ Gulmohar Guest House, Prayagraj
+          </div>
+          <div style="font-size: 0.95rem; color: var(--gold-antique);">
+            <strong>Grand Reception:</strong> Friday, 5th February 2027 ✦ Hotel Surya Galaxy, Shuklaganj, Unnao
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       4. SHUBH MUHURAT LIVE COUNTDOWN
+       ======================================================== -->
+  <section id="countdown" class="countdown-section">
+    <div class="royal-container">
+      <div class="countdown-box-wrapper royal-card-hover">
+        <div class="countdown-header-tag">
+          <span>✦ Auspicious Muhurat Countdown ✦</span>
+        </div>
+
+        <div class="muhurat-badge">
+          ✨ <strong>Godhuli Bela & Hastamelap:</strong> 06:45 PM onwards on Tuesday, 2nd February 2027
+        </div>
+
+        <div class="countdown-timer-grid">
+          <div class="timer-card">
+            <div class="number" id="cdDays">00</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="timer-card">
+            <div class="number" id="cdHours">00</div>
+            <div class="label">Hours</div>
+          </div>
+          <div class="timer-card">
+            <div class="number" id="cdMins">00</div>
+            <div class="label">Minutes</div>
+          </div>
+          <div class="timer-card">
+            <div class="number" id="cdSecs">00</div>
+            <div class="label">Seconds</div>
+          </div>
+        </div>
+
+        <div class="calendar-action-btns">
+          <a href="#" class="royal-btn-gold" id="addToGCalBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+            </svg>
+            Add to Google Calendar
+          </a>
+
+          <a href="#" class="royal-btn-outline" id="downloadIcsBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download Apple / Outlook (.ics)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. THE COUPLE: DO DIL EK DASTAN
+       ======================================================== -->
+  <section id="couple" class="section-padding couple-showcase-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/peacock.svg" alt="Peacock" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">दो दिल एक दास्ताँ</div>
+        <h2 class="section-title">The Bride & The Groom</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">❦</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="couple-profiles-grid">
+        <!-- Groom Card -->
+        <div class="couple-profile-card royal-card-hover">
+          <span class="card-corner tl">❖</span>
+          <span class="card-corner tr">❖</span>
+          <div class="profile-image-frame">
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Divyanshu Sahu - The Groom">
+          </div>
+          <div class="profile-role-tag">The Groom</div>
+          <h3 class="profile-person-name">Divyanshu Sahu</h3>
+          <p class="profile-lineage">Son of Smt. Savita Sahu & Shri Om Prakash Sahu</p>
+          <p class="profile-bio-text">
+            "From the moment our families met and our conversations began, I knew life's most beautiful journey was waiting to be shared with Sapna. She brings boundless joy, grace, and warmth into my world."
+          </p>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="couple-profile-card royal-card-hover">
+          <span class="card-corner tl">❖</span>
+          <span class="card-corner tr">❖</span>
+          <div class="profile-image-frame">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Sapna Kushwaha - The Bride">
+          </div>
+          <div class="profile-role-tag">The Bride</div>
+          <h3 class="profile-person-name">Sapna Kushwaha</h3>
+          <p class="profile-lineage">Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha</p>
+          <p class="profile-bio-text">
+            "Divyanshu is my strength, my greatest support, and my closest friend. In him, I found a partner who honors every dream, cherishes our families, and fills every day with peace and happiness."
+          </p>
+        </div>
+      </div>
+
+      <!-- Romantic Journey Timeline -->
+      <div class="love-story-wrapper">
+        <h3 style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-light); margin-bottom: 8px;">
+          How Destiny Wove Our Path
+        </h3>
+        <p style="font-style: italic; color: var(--text-muted); font-size: 1.1rem;">"Two souls, two loving families, united in one eternal bond"</p>
+
+        <div class="story-timeline-grid">
+          <div class="story-milestone-card">
+            <div class="milestone-icon-node">🌸</div>
+            <div class="milestone-year">The Beginning</div>
+            <h4 class="milestone-title">First Conversations</h4>
+            <p class="milestone-desc">When our families came together with warmth and blessings, sparking an instant bond of respect and heartfelt connection.</p>
+          </div>
+
+          <div class="story-milestone-card">
+            <div class="milestone-icon-node">💍</div>
+            <div class="milestone-year">The Promise</div>
+            <h4 class="milestone-title">Roka & Engagement</h4>
+            <p class="milestone-desc">With the sacred blessings of our elders and ancestors, our journey together was sealed with joy, sweet celebrations, and love.</p>
+          </div>
+
+          <div class="story-milestone-card">
+            <div class="milestone-icon-node">🔥</div>
+            <div class="milestone-year">February 2027</div>
+            <h4 class="milestone-title">The Sacred Union</h4>
+            <p class="milestone-desc">Taking the eternal Saat Phere at Gulmohar Guest House in Prayagraj followed by a Grand Reception at Hotel Surya Galaxy in Shuklaganj, Unnao.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. SHUBH KARYAKRAM (ROYAL CEREMONIES & EVENTS)
+       ======================================================== -->
+  <section id="ceremonies" class="section-padding ceremonies-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/music-instruments.svg" alt="Instruments" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">मांगलिक कार्यक्रम</div>
+        <h2 class="section-title">The Wedding Itinerary</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">⚜</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="ceremonies-grid">
+        <!-- Event 1: Ganesh Pujan & Mehendi -->
+        <div class="ceremony-card mehendi royal-card-hover">
+          <div class="ceremony-header-row">
+            <div class="ceremony-badge-icon">🌿</div>
+            <div class="ceremony-name-group">
+              <span class="ceremony-day">Pre-Wedding • Evening</span>
+              <h3 class="ceremony-title">Ganesh Pujan & Mehendi</h3>
+            </div>
+          </div>
+
+          <div class="ceremony-date-box">
+            <div class="ceremony-date-text">
+              <span>📅 Sunday, 31st January 2027</span>
+            </div>
+            <div class="ceremony-time-text">⏰ 04:00 PM onwards | Prayagraj</div>
+          </div>
+
+          <p class="ceremony-description">
+            Commencing with sacred invocations to Vignaharta Ganesha, followed by traditional henna adornments, folk geet, and sweet family celebrations.
+          </p>
+
+          <div class="ceremony-attire-box">
+            <span class="attire-label">Dress Code:</span>
+            <span class="attire-value">
+              <span class="color-dot" style="background: #2E7D32;"></span>
+              Henna Green & Mint
+            </span>
+          </div>
+        </div>
+
+        <!-- Event 2: Mangal Haldi -->
+        <div class="ceremony-card haldi royal-card-hover">
+          <div class="ceremony-header-row">
+            <div class="ceremony-badge-icon">🌼</div>
+            <div class="ceremony-name-group">
+              <span class="ceremony-day">Pre-Wedding • Morning</span>
+              <h3 class="ceremony-title">Haldi & Phoolon Ki Holi</h3>
+            </div>
+          </div>
+
+          <div class="ceremony-date-box">
+            <div class="ceremony-date-text">
+              <span>📅 Monday, 1st February 2027</span>
+            </div>
+            <div class="ceremony-time-text">⏰ 10:30 AM onwards | Prayagraj</div>
+          </div>
+
+          <p class="ceremony-description">
+            Anointing with auspicious sandalwood, turmeric ubtan, and showers of fresh yellow marigold petals accompanied by festive dholak beats.
+          </p>
+
+          <div class="ceremony-attire-box">
+            <span class="attire-label">Dress Code:</span>
+            <span class="attire-value">
+              <span class="color-dot" style="background: #FFB300;"></span>
+              Sunshine Yellow & White
+            </span>
+          </div>
+        </div>
+
+        <!-- Event 3: Sangeet Gala (Dress Code: Black) -->
+        <div class="ceremony-card sangeet royal-card-hover" style="border-color: #d4af37;">
+          <div class="ceremony-header-row">
+            <div class="ceremony-badge-icon">🪕</div>
+            <div class="ceremony-name-group">
+              <span class="ceremony-day">Musical Night</span>
+              <h3 class="ceremony-title">Royal Sangeet Celebration</h3>
+            </div>
+          </div>
+
+          <div class="ceremony-date-box">
+            <div class="ceremony-date-text">
+              <span>📅 Monday, 1st February 2027</span>
+            </div>
+            <div class="ceremony-time-text">⏰ 07:30 PM onwards | Prayagraj</div>
+          </div>
+
+          <p class="ceremony-description">
+            An electrifying evening of family performances, musical rhythms, Sufi beats, and celebratory dancing under the stars.
+          </p>
+
+          <div class="ceremony-attire-box">
+            <span class="attire-label">Dress Code:</span>
+            <span class="attire-value">
+              <span class="color-dot" style="background: #000000; border: 1.5px solid #d4af37;"></span>
+              Royal Black / All Black Glamour
+            </span>
+          </div>
+        </div>
+
+        <!-- Event 4: The Sacred Vivaha (Wedding on 2 Feb 2027 at Gulmohar Guest House Prayagraj) -->
+        <div class="ceremony-card vivaha royal-card-hover">
+          <div class="ceremony-header-row">
+            <div class="ceremony-badge-icon">🔥</div>
+            <div class="ceremony-name-group">
+              <span class="ceremony-day">Shubh Vivaha • Auspicious Day</span>
+              <h3 class="ceremony-title">Baraat, Varmala & Sacred Pheras</h3>
+            </div>
+          </div>
+
+          <div class="ceremony-date-box">
+            <div class="ceremony-date-text">
+              <span>📅 Tuesday, 2nd February 2027</span>
+            </div>
+            <div class="ceremony-time-text">
+              👑 Baraat: 05:00 PM | 🌸 Varmala: 06:15 PM<br>
+              ✨ Sacred Pheras: 06:45 PM<br>
+              📍 <strong>Gulmohar Guest House, Prayagraj</strong>
+            </div>
+          </div>
+
+          <p class="ceremony-description">
+            The grand baraat procession, exchange of holy varmala, and seven sacred circumambulations around the holy agni sealing an eternal bond of marriage.
+          </p>
+        </div>
+
+        <!-- Event 5: Grand Reception (Reception on 5 Feb 2027 at Hotel Surya Galaxy Shuklaganj, Unnao) -->
+        <div class="ceremony-card royal-card-hover" style="border-color: #d4af37;">
+          <div class="ceremony-header-row">
+            <div class="ceremony-badge-icon">👑</div>
+            <div class="ceremony-name-group">
+              <span class="ceremony-day">Grand Reception • Gala Dinner</span>
+              <h3 class="ceremony-title">The Royal Reception</h3>
+            </div>
+          </div>
+
+          <div class="ceremony-date-box">
+            <div class="ceremony-date-text">
+              <span>📅 Friday, 5th February 2027</span>
+            </div>
+            <div class="ceremony-time-text">
+              ⏰ 07:30 PM onwards<br>
+              📍 <strong>Hotel Surya Galaxy, Shuklaganj, Unnao</strong>
+            </div>
+          </div>
+
+          <p class="ceremony-description">
+            Join the Sahu & Kushwaha families in celebrating the newlyweds Divyanshu & Sapna with a grand feast, celebratory toasts, and heartfelt blessings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. SAAT PHERE: THE SACRED SEVEN VOWS
+       ======================================================== -->
+  <section id="saatphere" class="section-padding saat-phere-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/kalash.svg" alt="Kalash" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">सप्तपदी - सात फेरे</div>
+        <h2 class="section-title">The Sacred Seven Vows</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">🔥</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="phere-interactive-container royal-card-hover">
+        <!-- Holy Agni Simulation -->
+        <div class="sacred-fire-box">
+          <div class="fire-kund-base"></div>
+          <div class="fire-flame-motion">🔥</div>
+        </div>
+
+        <p style="font-size: 1.15rem; color: var(--gold-light); margin-bottom: 24px;">
+          Click through each sacred step around the holy fire to read its timeless Vedic promise:
+        </p>
+
+        <!-- 7 Step Tab Buttons -->
+        <div class="phere-step-tabs" id="pheraTabs"></div>
+
+        <!-- Active Vow Display Card -->
+        <div class="active-vow-card" id="pheraContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. VENUE & ROYAL CELEBRATION TRAVEL GUIDE
+       ======================================================== -->
+  <section id="venue" class="section-padding venue-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/elephant.svg" alt="Elephant" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">मांगलिक स्थल एवं मार्गदर्शिका</div>
+        <h2 class="section-title">Celebration Venues</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">🏰</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <!-- Twin Venues Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 32px;">
+        <!-- Venue 1: Wedding in Prayagraj -->
+        <div class="royal-card royal-card-hover" style="padding: 28px; display: flex; flex-direction: column;">
+          <div style="border-radius: 12px; overflow: hidden; height: 200px; margin-bottom: 18px; border: 1.5px solid var(--gold-antique); position: relative;">
+            <img src="https://images.unsplash.com/photo-1545232979-fbf65d496e14?auto=format&fit=crop&w=700&q=80" alt="Gulmohar Guest House Prayagraj" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 12px; left: 12px; background: rgba(138, 18, 36, 0.9); border: 1px solid var(--gold-light); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-family: 'Cinzel', serif; color: #fff;">
+              💍 Wedding Venue • 2 Feb 2027
+            </div>
+          </div>
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #fff; margin-bottom: 6px;">Gulmohar Guest House</h3>
+          <p style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 12px;">Prayagraj, Uttar Pradesh</p>
+          <p style="font-size: 0.95rem; color: var(--silk-cream); margin-bottom: 20px; flex: 1; line-height: 1.6;">
+            The sacred wedding celebrations, baraat reception, and Saat Phere will be held at this beautiful venue in the holy city of Prayagraj.
+          </p>
+          <a href="https://maps.google.com/?q=Gulmohar+Guest+House+Prayagraj" target="_blank" rel="noopener noreferrer" class="royal-btn-gold" style="width: 100%; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Prayagraj Venue Location
+          </a>
+        </div>
+
+        <!-- Venue 2: Reception in Shuklaganj, Unnao -->
+        <div class="royal-card royal-card-hover" style="padding: 28px; display: flex; flex-direction: column;">
+          <div style="border-radius: 12px; overflow: hidden; height: 200px; margin-bottom: 18px; border: 1.5px solid var(--gold-antique); position: relative;">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=700&q=80" alt="Hotel Surya Galaxy Shuklaganj Unnao" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 12px; left: 12px; background: rgba(11, 59, 43, 0.9); border: 1px solid var(--gold-light); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-family: 'Cinzel', serif; color: #fff;">
+              👑 Reception Venue • 5 Feb 2027
+            </div>
+          </div>
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #fff; margin-bottom: 6px;">Hotel Surya Galaxy</h3>
+          <p style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 12px;">Shuklaganj, Unnao, Uttar Pradesh</p>
+          <p style="font-size: 0.95rem; color: var(--silk-cream); margin-bottom: 20px; flex: 1; line-height: 1.6;">
+            The Grand Reception dinner and celebration honoring Divyanshu & Sapna will take place at Hotel Surya Galaxy in Shuklaganj, Unnao (Kanpur vicinity).
+          </p>
+          <a href="https://maps.google.com/?q=Hotel+Surya+Galaxy+Shuklaganj+Unnao" target="_blank" rel="noopener noreferrer" class="royal-btn-gold" style="width: 100%; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Shuklaganj Venue Location
+          </a>
+        </div>
+      </div>
+
+      <!-- Travel & Connectivity Info -->
+      <div class="royal-card" style="padding: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div class="travel-info-card">
+            <div class="travel-icon">✈️</div>
+            <div>
+              <h4 class="travel-title">Air Travel</h4>
+              <p class="travel-desc">
+                Prayagraj Airport (IXD) serves the wedding city. For the reception in Shuklaganj/Unnao, Kanpur Airport (KNU) and Lucknow Airport (LKO) provide convenient connections.
+              </p>
+            </div>
+          </div>
+
+          <div class="travel-info-card">
+            <div class="travel-icon">🚂</div>
+            <div>
+              <h4 class="travel-title">Train Connectivity</h4>
+              <p class="travel-desc">
+                Prayagraj Junction (PRYJ) connects directly across India. Shuklaganj is located right across the Ganges adjacent to Kanpur Central Railway Station (CNB).
+              </p>
+            </div>
+          </div>
+
+          <div class="travel-info-card">
+            <div class="travel-icon">🛎️</div>
+            <div>
+              <h4 class="travel-title">Guest Assistance</h4>
+              <p class="travel-desc">
+                Family coordinators and assistance desks will be available at both venues to welcome and guide our valued guests.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. PRE-WEDDING MEMORIES & PHOTO GALLERY
+       ======================================================== -->
+  <section id="gallery" class="section-padding gallery-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/peacock.svg" alt="Peacock" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">मधुर स्मृतियाँ</div>
+        <h2 class="section-title">Pre-Wedding Moments</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">📸</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-frame royal-card-hover">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Palace Promenade">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-text">Amidst Royal Courtyards</span>
+          </div>
+        </div>
+
+        <div class="gallery-frame royal-card-hover">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Henna Traditions">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-text">Graceful Traditions</span>
+          </div>
+        </div>
+
+        <div class="gallery-frame royal-card-hover">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Lake Pichola Sunset">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-text">Sunset Over Lake Pichola</span>
+          </div>
+        </div>
+
+        <div class="gallery-frame royal-card-hover">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Royal Banquet Table">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-text">Chandelier Evenings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. LIGHT A DIYA FOR THE COUPLE (VIRTUAL BLESSING)
+       ======================================================== -->
+  <section id="diya" class="section-padding diya-ceremony-section">
+    <div class="royal-container">
+      <div class="diya-interactive-box royal-card-hover">
+        <div class="section-subtitle-devanagari">मंगल दीप प्रज्वलन</div>
+        <h2 class="section-title" style="font-size: 2rem;">Light a Diya for the Couple</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">🪔</div>
+          <div class="line"></div>
+        </div>
+
+        <div class="diya-interactive-svg-wrap" id="diyaInteractiveSvg" title="Click to Light a Diya">
+          <img src="assets/images/diya.svg" alt="Auspicious Diya" style="width: 100%; height: 100%;">
+        </div>
+
+        <div class="diya-counter-display">
+          <span class="diya-counter-number" id="diyaCount">1,428</span>
+          <span style="font-size: 1.1rem; display: block; color: var(--gold-antique); margin-top: 4px;">Diyas Lit with Sacred Blessings</span>
+        </div>
+
+        <p class="diya-inst-text">
+          Touch the sacred lamp to send your prayers, illumination, and everlasting happiness to Divyanshu & Sapna as they begin their sacred journey together.
+        </p>
+
+        <button class="light-diya-btn" id="lightDiyaBtn">
+          <span>🪔 Light a Diya for Divyanshu & Sapna</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       11. RSVP & ROYAL BLESSINGS BOOK (GUESTBOOK)
+       ======================================================== -->
+  <section id="rsvp" class="section-padding rsvp-section">
+    <div class="royal-container">
+      <div class="section-header">
+        <div class="section-icon-motif">
+          <img src="assets/images/kalash.svg" alt="Kalash" style="width: 100%;">
+        </div>
+        <div class="section-subtitle-devanagari">उपस्थिति एवं शुभकामनाएँ</div>
+        <h2 class="section-title">RSVP & Royal Blessings</h2>
+        <div class="section-divider-ornate">
+          <div class="line"></div>
+          <div class="diamond">💌</div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="rsvp-layout-grid">
+        <!-- RSVP Submission Form -->
+        <div class="rsvp-form-card royal-card-hover">
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold-light); margin-bottom: 20px;">
+            Graciously Confirm Your Attendance
+          </h3>
+
+          <form id="rsvpForm">
+            <div class="royal-form-group">
+              <label class="royal-form-label" for="guestName">Your Full Name *</label>
+              <input type="text" id="guestName" class="royal-form-input" placeholder="e.g. Shri Rajesh & Smt. Rekha Gupta" required>
+            </div>
+
+            <div class="royal-form-group">
+              <label class="royal-form-label" for="guestCity">City / Hometown</label>
+              <input type="text" id="guestCity" class="royal-form-input" placeholder="e.g. Prayagraj / Kanpur / Lucknow">
+            </div>
+
+            <div class="royal-form-group">
+              <label class="royal-form-label">Will You Be Joining The Celebrations?</label>
+              <div class="royal-radio-group">
+                <label class="royal-radio-label">
+                  <input type="radio" name="attendance" value="Joyfully Attending" checked>
+                  <span>Joyfully Attending</span>
+                </label>
+                <label class="royal-radio-label">
+                  <input type="radio" name="attendance" value="Regretfully Unable">
+                  <span>Sending Blessings from Afar</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="royal-form-group">
+              <label class="royal-form-label" for="guestCount">Number of Honored Guests</label>
+              <select id="guestCount" class="royal-form-select">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5+">5+ Family Members</option>
+              </select>
+            </div>
+
+            <div class="royal-form-group">
+              <label class="royal-form-label" for="guestMessage">Your Heartfelt Blessings (Shubhkaamnayein)</label>
+              <textarea id="guestMessage" class="royal-form-textarea" rows="4" placeholder="Share your warm wishes and blessing for the bride and groom..."></textarea>
+            </div>
+
+            <button type="submit" class="royal-btn-gold" style="width: 100%; justify-content: center; padding: 14px;">
+              <span>Send RSVP & Blessings</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Royal Wall of Blessings (Guestbook) -->
+        <div class="blessings-wall-card royal-card-hover">
+          <div class="blessings-wall-header">
+            <span>Wall of Warm Wishes</span>
+            <span style="font-size: 0.9rem; color: var(--gold-antique);">📜 Shubh Aashirwad</span>
+          </div>
+
+          <div class="blessings-scroll-area" id="blessingsContainer">
+            <!-- Dynamic Blessings items rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       12. ROYAL FOOTER & HONORS
+       ======================================================== -->
+  <footer class="royal-footer">
+    <div class="royal-container">
+      <div class="footer-shloka">
+        ॥ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥<br>
+        ॥ सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥
+      </div>
+
+      <div class="footer-compliments-box">
+        <div class="footer-compliments-title">With Best Compliments From</div>
+        <p class="footer-compliments-names">
+          Sahu & Kushwaha Families<br>
+          Near & Dear Relatives, Friends & Well-Wishers
+        </p>
+      </div>
+
+      <div class="footer-share-bar">
+        <a href="#" class="royal-btn-gold share-whatsapp-btn" style="background: #25D366; color: #fff;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          Share on WhatsApp
+        </a>
+
+        <button class="royal-btn-outline print-invite-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <path d="M6 14h12v8H6z"/>
+          </svg>
+          Print / Save E-Card (PDF)
+        </button>
+      </div>
+
+      <p class="footer-copyright">
+        © 2027 Divyanshu & Sapna's Royal Vivaha Patrika. Designed with love and divine blessings.
+      </p>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Quick Actions Dock -->
+  <div class="floating-actions-dock">
+    <a href="#" class="dock-btn dock-whatsapp share-whatsapp-btn" title="Share via WhatsApp">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+      </svg>
+    </a>
+    <button class="dock-btn dock-print print-invite-btn" title="Print or Save Invitation PDF">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <path d="M6 14h12v8H6z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
