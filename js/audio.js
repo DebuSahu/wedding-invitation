@@ -1,13 +1,14 @@
 /**
  * Royal Indian Wedding Audio Engine
  * Plays the user's selected song:
- * "Chhote Chhote Bhaiyon Ke Bade Bhaiya" (from YouTube Short: https://youtube.com/shorts/e6id-ngBafI)
- * Includes full track and playlist switcher with temple bell chime.
+ * WhatsApp / Custom Wedding Audio (assets/audio/user_wedding_sound.mp3)
+ * Includes playlist switcher with celebratory Bollywood wedding melodies and temple bell chime.
  */
 
 class ShehnaiAudioEngine {
   constructor() {
     this.tracks = [
+      { name: 'Special Wedding Song ❤️', src: 'assets/audio/user_wedding_sound.mp3' },
       { name: 'Chhote Chhote Bhaiyon Ke Bade Bhaiya', src: 'assets/audio/chhote_chhote_bhaiya.mp3' },
       { name: 'Chhote Chhote Bhaiya (Full Song)', src: 'assets/audio/chhote_chhote_bhaiya_full.mp3' },
       { name: 'Raja Ki Aayegi Barat', src: 'assets/audio/raja_ki_aayegi_barat.mp3' }
