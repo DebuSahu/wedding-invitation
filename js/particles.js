@@ -1,5 +1,5 @@
 /**
- * Luxury Floating Golden Dust & Starlight Particle Canvas
+ * Luxury Floating Golden Dust & Confetti Particle Canvas
  * Lightweight, 60fps hardware-accelerated ambient animations
  */
 
@@ -20,12 +20,17 @@
 
   const particleCount = window.innerWidth < 768 ? 26 : 48;
   const particles = [];
+  const confettis = [];
 
   const goldColors = [
     'rgba(255, 245, 206, ', // Bright champagne
     'rgba(247, 219, 120, ', // Rich gold
     'rgba(212, 175, 55, ',  // Royal classic gold
     'rgba(230, 190, 80, '   // Warm amber
+  ];
+
+  const confettiPalette = [
+    '#D4AF37', '#FFF3C4', '#E53935', '#FF8A80', '#FFD54F', '#C59B27', '#FFFFFF'
   ];
 
   class Particle {
@@ -64,7 +69,6 @@
       ctx.fillStyle = this.colorPrefix + this.alpha + ')';
 
       if (this.isStar && this.size > 1.8) {
-        // Draw 4-point twinkling star
         ctx.translate(this.x, this.y);
         ctx.beginPath();
         const r = this.size * 2;
@@ -75,7 +79,6 @@
         ctx.quadraticCurveTo(0, 0, 0, -r);
         ctx.fill();
       } else {
-        // Soft glowing circle
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -84,9 +87,55 @@
     }
   }
 
+  class Confetti {
+    constructor(x, y) {
+      this.x = x || width / 2;
+      this.y = y || height / 2;
+      this.w = Math.random() * 10 + 6;
+      this.h = Math.random() * 7 + 4;
+      this.color = confettiPalette[Math.floor(Math.random() * confettiPalette.length)];
+      this.speedY = -(Math.random() * 12 + 6);
+      this.speedX = (Math.random() - 0.5) * 12;
+      this.gravity = 0.28;
+      this.rot = Math.random() * 360;
+      this.rotSpeed = (Math.random() - 0.5) * 12;
+      this.opacity = 1;
+    }
+
+    update() {
+      this.speedY += this.gravity;
+      this.y += this.speedY;
+      this.x += this.speedX;
+      this.rot += this.rotSpeed;
+      if (this.speedY > 0) {
+        this.opacity -= 0.008;
+      }
+    }
+
+    draw() {
+      if (this.opacity <= 0) return;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.opacity);
+      ctx.translate(this.x, this.y);
+      ctx.rotate((this.rot * Math.PI) / 180);
+      ctx.fillStyle = this.color;
+      ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+      ctx.restore();
+    }
+  }
+
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
   }
+
+  window.confettiBurst = function () {
+    const burstCount = window.innerWidth < 768 ? 60 : 100;
+    const startX = width / 2;
+    const startY = height * 0.45;
+    for (let i = 0; i < burstCount; i++) {
+      confettis.push(new Confetti(startX, startY));
+    }
+  };
 
   let isRunning = true;
 
@@ -94,9 +143,19 @@
     if (!isRunning) return;
     ctx.clearRect(0, 0, width, height);
 
+    // Render ambient dust & stars
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
+    }
+
+    // Render active confetti bursts
+    for (let i = confettis.length - 1; i >= 0; i--) {
+      confettis[i].update();
+      confettis[i].draw();
+      if (confettis[i].y > height + 20 || confettis[i].opacity <= 0) {
+        confettis.splice(i, 1);
+      }
     }
 
     requestAnimationFrame(render);
@@ -114,4 +173,3 @@
     }
   });
 })();
-

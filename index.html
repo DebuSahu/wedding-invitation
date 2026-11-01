@@ -11,7 +11,7 @@
   <meta property="og:description" content="With the divine blessings of Lord Ganesha, you are cordially invited to celebrate the holy matrimony of Divyanshu &amp; Sapna. 2nd February 2027 in Prayagraj &amp; 5th February 2027 in Shuklaganj, Unnao.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://debusahu.github.io/wedding-invitation/">
-  <meta property="og:image" content="https://debusahu.github.io/wedding-invitation/assets/images/venue_gulmohar_prayagraj.jpg">
+  <meta property="og:image" content="https://debusahu.github.io/wedding-invitation/assets/images/couple_cartoon.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Preconnect & Royal Fonts -->
@@ -23,6 +23,49 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- 0. INTERACTIVE START OVERLAY: "WE HAVE GOOD NEWS! TAP TO OPEN" -->
+  <div id="announcementOverlay" class="announcement-overlay">
+    <!-- Screen 1: The Good News Invitation -->
+    <div id="goodNewsBox" class="announcement-box">
+      <div class="announcement-eyebrow">✨ A SPECIAL ANNOUNCEMENT ✨</div>
+      <div class="announcement-shloka">॥ श्री गणेशाय नमः ॥</div>
+      <h2 class="announcement-heading">We Have Good News!</h2>
+      <p class="announcement-subtitle">A joyful royal surprise awaits your warm blessings...</p>
+      
+      <!-- Animated Floating Envelope -->
+      <div id="tapEnvelopeBtn" class="royal-envelope-wrapper" role="button" aria-label="Tap to open royal envelope">
+        <div class="envelope-base">
+          <div class="envelope-seal-badge">D&amp;S</div>
+        </div>
+      </div>
+
+      <button id="openAnnouncementBtn" class="tap-to-open-btn" type="button">
+        Tap to Open 💌
+      </button>
+    </div>
+
+    <!-- Screen 2: Celebration Popup: "WE ARE GETTING MARRIED!" -->
+    <div id="marriedRevealBox" class="announcement-box married-reveal-container">
+      <div class="announcement-eyebrow" style="background: rgba(229, 57, 53, 0.15); color: #C62828; border-color: rgba(229, 57, 53, 0.4);">
+        💍 IT'S OFFICIAL! 💍
+      </div>
+      
+      <div class="married-avatar-preview">
+        <img src="assets/images/couple_cartoon.jpg" alt="Divyanshu &amp; Sapna Cartoon Couple">
+      </div>
+
+      <h2 class="married-banner-title shimmer-text">We Are Getting Married!</h2>
+      <div class="married-couple-names">Divyanshu &amp; Sapna</div>
+      <p class="married-tagline">
+        With the divine blessings of Lord Ganesha &amp; our beloved parents, we invite you to celebrate our holy matrimony and sacred pheras!
+      </p>
+
+      <button id="enterCelebrationBtn" class="tap-to-open-btn" style="width: 100%; justify-content: center;" type="button">
+        Enter Royal Celebration ✨
+      </button>
+    </div>
+  </div>
 
   <!-- OPULENT ROYAL CONTAINER -->
   <div class="royal-page-container">
@@ -76,14 +119,12 @@
           solicit your gracious presence, love, and warm blessings to celebrate the auspicious wedding ceremony of their beloved son
         </p>
 
-        <!-- Couple Monumental Showcase with Animated Portraits -->
+        <!-- Couple Monumental Showcase with Cartoonish Caricatures -->
         <div class="couple-monument-grid">
-          <!-- Groom Card with Animated Royal Portrait -->
+          <!-- Groom Card with Cartoon Avatar -->
           <div class="couple-royal-card reveal-on-scroll" data-delay="100">
-            <div class="couple-portrait-frame">
-              <img src="assets/images/groom_divyanshu.jpg" alt="Divyanshu - The Royal Groom" loading="lazy">
-              <div class="portrait-glow-veil"></div>
-              <div class="portrait-sparkle-overlay"></div>
+            <div class="cartoon-portrait-frame">
+              <img src="assets/images/groom_cartoon.jpg" alt="Divyanshu - The Royal Groom" loading="lazy">
             </div>
             <div class="royal-role-tag">The Royal Groom</div>
             <h2 class="person-royal-name shimmer-text">Divyanshu</h2>
@@ -99,12 +140,10 @@
             <div class="weds-script-text">weds</div>
           </div>
 
-          <!-- Bride Card with Animated Royal Portrait -->
+          <!-- Bride Card with Cartoon Avatar -->
           <div class="couple-royal-card reveal-on-scroll" data-delay="300">
-            <div class="couple-portrait-frame">
-              <img src="assets/images/bride_sapna.jpg" alt="Sapna - The Royal Bride" loading="lazy">
-              <div class="portrait-glow-veil"></div>
-              <div class="portrait-sparkle-overlay"></div>
+            <div class="cartoon-portrait-frame">
+              <img src="assets/images/bride_cartoon.jpg" alt="Sapna - The Royal Bride" loading="lazy">
             </div>
             <div class="royal-role-tag">The Royal Bride</div>
             <h2 class="person-royal-name shimmer-text">Sapna</h2>
@@ -115,7 +154,7 @@
           </div>
         </div>
 
-        <p class="invitation-intro-text" style="margin-top: 18px; margin-bottom: 0; font-size: 1rem; font-style: italic;">
+        <p class="invitation-intro-text" style="margin-top: 18px; margin-bottom: 0; font-size: 0.98rem; font-style: italic;">
           "Together with our families, we joyfully request the pleasure of your company as we take our sacred vows and unite two souls in eternal love, dharma, and companionship."
         </p>
 

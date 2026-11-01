@@ -1517,3 +1517,567 @@ body {
   0% { transform: translate(-50%, -75%) rotate(0deg); }
   100% { transform: translate(-50%, -75%) rotate(360deg); }
 }
+
+
+/* ========================================================
+   INTERACTIVE START OVERLAY: "WE HAVE GOOD NEWS! TAP TO OPEN"
+   ======================================================== */
+.announcement-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at 50% 25%, #42060E 0%, #170104 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.8s;
+}
+
+.announcement-overlay.opened {
+  opacity: 0;
+  transform: scale(1.06);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.announcement-box {
+  width: 100%;
+  max-width: 440px;
+  background: #FDFBF7;
+  border: 2px solid var(--gold-primary);
+  border-radius: 24px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(212, 175, 55, 0.4);
+  position: relative;
+  animation: modalScaleIn 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.85) translateY(24px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.announcement-eyebrow {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-gold);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.announcement-shloka {
+  font-family: 'Rozha One', serif;
+  font-size: 1.15rem;
+  color: var(--royal-maroon);
+  margin-bottom: 4px;
+}
+
+.announcement-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.95rem;
+  font-weight: 800;
+  color: var(--royal-maroon);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.announcement-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  margin-bottom: 20px;
+}
+
+/* 3D Animated Floating Envelope */
+.royal-envelope-wrapper {
+  width: 160px;
+  height: 115px;
+  margin: 10px auto 24px;
+  position: relative;
+  cursor: pointer;
+  perspective: 600px;
+}
+
+.envelope-base {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #6B0E1A 0%, #3B040B 100%);
+  border: 2px solid var(--gold-primary);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: envelopeBob 2.6s ease-in-out infinite alternate;
+  transition: transform 0.25s ease;
+}
+
+.envelope-base:hover {
+  transform: scale(1.06);
+}
+
+@keyframes envelopeBob {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.envelope-seal-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  border: 2px solid #FFF7D6;
+  color: #2D0308;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  animation: sealGlowPulse 2s infinite ease-in-out;
+}
+
+@keyframes sealGlowPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+  50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 235, 160, 0.9); }
+}
+
+.tap-to-open-btn {
+  background: var(--gold-gradient);
+  color: #2D0308;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 28px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  animation: btnPulseGlow 2.2s infinite ease-in-out;
+}
+
+@keyframes btnPulseGlow {
+  0%, 100% { box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); transform: scale(1); }
+  50% { box-shadow: 0 8px 30px rgba(255, 235, 160, 0.7); transform: scale(1.03); }
+}
+
+/* Step 2 Revealed State: "WE ARE GETTING MARRIED!" */
+.married-reveal-container {
+  display: none;
+  animation: marriedPopIn 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.married-reveal-container.active {
+  display: block;
+}
+
+@keyframes marriedPopIn {
+  from { opacity: 0; transform: scale(0.8) translateY(25px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.married-avatar-preview {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-primary);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+  animation: avatarGlow 3s infinite alternate ease-in-out;
+}
+
+.married-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes avatarGlow {
+  0% { transform: scale(1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); }
+  100% { transform: scale(1.04); box-shadow: 0 0 30px rgba(212, 175, 55, 0.7); }
+}
+
+.married-banner-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--royal-maroon);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.married-couple-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text-gold);
+  margin-bottom: 8px;
+}
+
+.married-tagline {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  margin-bottom: 22px;
+}
+
+/* ========================================================
+   CARTOONISH BRIDE & GROOM AVATAR STYLES
+   ======================================================== */
+.cartoon-portrait-frame {
+  width: 100%;
+  max-width: 220px;
+  height: 250px;
+  margin: 0 auto 14px;
+  border-radius: 110px 110px 20px 20px;
+  overflow: hidden;
+  position: relative;
+  border: 2.5px solid var(--gold-primary);
+  box-shadow: 0 10px 28px rgba(79, 9, 19, 0.15), 0 0 20px rgba(212, 175, 55, 0.3);
+  background: #FFFBF2;
+  transition: transform 0.3s ease;
+}
+
+.cartoon-portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: cartoonBob 3.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes cartoonBob {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.04) translateY(-4px); }
+}
+
+/* ========================================================
+   MOBILE-FIRST PRECISION STYLING (PERFECT ON ALL PHONES)
+   ======================================================== */
+@media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+
+  .royal-header-bar {
+    padding: 10px 14px;
+  }
+
+  .crest-text-title {
+    font-size: 0.95rem;
+  }
+
+  .crest-text-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .shehnai-audio-button {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .royal-hero-section {
+    padding: 24px 14px 16px;
+  }
+
+  .ganesha-emblem {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 10px;
+  }
+
+  .shloka-invocation-devanagari {
+    font-size: 1.25rem;
+  }
+
+  .shloka-verse-box {
+    font-size: 0.82rem;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+  }
+
+  .royal-patrika-parchment {
+    padding: 24px 14px;
+    border-radius: 18px;
+  }
+
+  .corner-flourish {
+    width: 32px;
+    height: 32px;
+  }
+
+  .patrika-badge-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 16px;
+  }
+
+  .invitation-intro-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .couple-monument-grid {
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .couple-royal-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  .cartoon-portrait-frame {
+    max-width: 190px;
+    height: 220px;
+    border-radius: 95px 95px 16px 16px;
+    margin-bottom: 10px;
+  }
+
+  .person-royal-name {
+    font-size: 1.85rem;
+    margin-bottom: 4px;
+  }
+
+  .person-family-honor {
+    font-size: 0.82rem;
+  }
+
+  .union-knot-center {
+    padding: 2px 0;
+  }
+
+  .sacred-knot-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .union-knot-center::before {
+    width: 55px;
+    height: 55px;
+  }
+
+  .weds-script-text {
+    font-size: 1.1rem;
+  }
+
+  .royal-dates-banner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 14px;
+    margin-top: 20px;
+  }
+
+  .highlight-icon-wrap {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .highlight-info-title {
+    font-size: 0.68rem;
+  }
+
+  .highlight-info-details {
+    font-size: 0.92rem;
+  }
+
+  .highlight-info-venue {
+    font-size: 0.75rem;
+  }
+
+  .countdown-royal-section {
+    padding: 14px;
+  }
+
+  .countdown-royal-card {
+    padding: 22px 14px;
+    border-radius: 18px;
+  }
+
+  .countdown-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .muhurat-badge-pill {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+  }
+
+  .countdown-clock-grid {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .clock-cell {
+    padding: 10px 4px;
+    border-radius: 10px;
+  }
+
+  .clock-number {
+    font-size: 1.6rem;
+  }
+
+  .clock-label {
+    font-size: 0.6rem;
+  }
+
+  .royal-content-section {
+    padding: 26px 14px;
+  }
+
+  .section-headline {
+    font-size: 1.65rem;
+  }
+
+  .section-devanagari-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .ceremonies-royal-grid {
+    gap: 14px;
+  }
+
+  .ceremony-royal-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .ceremony-name {
+    font-size: 1.25rem;
+  }
+
+  .ceremony-datetime-pill {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .ceremony-details {
+    font-size: 0.84rem;
+  }
+
+  .sangeet-dress-pill {
+    font-size: 0.74rem;
+    padding: 5px 10px;
+  }
+
+  .venues-royal-grid {
+    gap: 16px;
+  }
+
+  .venue-royal-box {
+    border-radius: 16px;
+  }
+
+  .venue-image-frame {
+    height: 180px;
+  }
+
+  .venue-content-wrap {
+    padding: 14px;
+  }
+
+  .venue-place-name {
+    font-size: 1.25rem;
+  }
+
+  .venue-city-location {
+    font-size: 0.82rem;
+  }
+
+  .venue-description-text {
+    font-size: 0.82rem;
+    margin-bottom: 12px;
+  }
+
+  .venue-map-action-btn {
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+
+  .saptapadi-royal-container {
+    padding: 22px 14px;
+    border-radius: 18px;
+  }
+
+  .phera-step-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .phera-sanskrit-shloka {
+    font-size: 1.15rem;
+  }
+
+  .phera-vow-title {
+    font-size: 1.05rem;
+  }
+
+  .phera-vow-meaning {
+    font-size: 0.85rem;
+  }
+
+  .diya-royal-box {
+    padding: 26px 14px;
+    border-radius: 18px;
+  }
+
+  .diya-graphic-wrap {
+    width: 76px;
+    height: 76px;
+  }
+
+  .diya-count-number {
+    font-size: 1.9rem;
+  }
+
+  .diya-light-action-btn {
+    padding: 11px 20px;
+    font-size: 0.84rem;
+  }
+
+  .rsvp-form-container {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+
+  .wishes-royal-box {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+
+  .royal-page-container {
+    padding-bottom: 95px;
+  }
+
+  .royal-bottom-dock {
+    padding: 8px 14px;
+    gap: 10px;
+  }
+
+  .dock-btn {
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+}

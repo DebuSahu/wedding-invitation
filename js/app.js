@@ -1,10 +1,55 @@
 /**
  * The Royal Hindu Wedding Invitation - Divyanshu & Sapna
  * February 2027
- * Enhanced with Dynamic Animations & Interactive Experiences
+ * Interactive Announcement, Confetti, Animations & Audio Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. INTERACTIVE START PAGE: "WE HAVE GOOD NEWS! TAP TO OPEN" -> "WE ARE GETTING MARRIED!"
+  const announcementOverlay = document.getElementById('announcementOverlay');
+  const goodNewsBox = document.getElementById('goodNewsBox');
+  const marriedRevealBox = document.getElementById('marriedRevealBox');
+  const openAnnouncementBtn = document.getElementById('openAnnouncementBtn');
+  const tapEnvelopeBtn = document.getElementById('tapEnvelopeBtn');
+  const enterCelebrationBtn = document.getElementById('enterCelebrationBtn');
+
+  function openGoodNews() {
+    // Play celebratory Shehnai music instantly (user clicked/tapped, unlocks mobile audio)
+    if (window.shehnaiEngine && !window.shehnaiEngine.isPlaying) {
+      window.shehnaiEngine.play();
+    }
+
+    // Launch celebratory confetti shower
+    if (window.confettiBurst) {
+      window.confettiBurst();
+      setTimeout(window.confettiBurst, 400);
+    }
+
+    // Switch to Screen 2: "WE ARE GETTING MARRIED!"
+    if (goodNewsBox && marriedRevealBox) {
+      goodNewsBox.style.display = 'none';
+      marriedRevealBox.classList.add('active');
+    }
+  }
+
+  if (openAnnouncementBtn) {
+    openAnnouncementBtn.addEventListener('click', openGoodNews);
+  }
+  if (tapEnvelopeBtn) {
+    tapEnvelopeBtn.addEventListener('click', openGoodNews);
+  }
+
+  if (enterCelebrationBtn && announcementOverlay) {
+    enterCelebrationBtn.addEventListener('click', () => {
+      announcementOverlay.classList.add('opened');
+      // Trigger instant reveal for top hero section
+      setTimeout(() => {
+        const heroSection = document.querySelector('.royal-hero-section');
+        if (heroSection) heroSection.classList.add('is-revealed');
+      }, 300);
+    });
+  }
+
   // 1. SCROLL-REVEAL INTERSECTION OBSERVER (BUTTERY 60FPS)
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
@@ -86,23 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.shehnaiEngine.onStateChange = updateMusicUI;
   }
 
-  // Auto-unlock audio on first touch/click
-  let audioUnlocked = false;
-  function unlockAudioOnFirstInteraction() {
-    if (audioUnlocked) return;
-    audioUnlocked = true;
-    if (window.shehnaiEngine && !window.shehnaiEngine.isPlaying) {
-      window.shehnaiEngine.play();
-    }
-    window.removeEventListener('click', unlockAudioOnFirstInteraction);
-    window.removeEventListener('touchstart', unlockAudioOnFirstInteraction);
-  }
-  window.addEventListener('click', unlockAudioOnFirstInteraction, { once: true });
-  window.addEventListener('touchstart', unlockAudioOnFirstInteraction, { once: true });
-
   // 3. LIVE COUNTDOWN TO SHUBH HASTAMELAP MUHURAT (2 FEB 2027, 18:45 IST)
   const weddingDate = new Date('2027-02-02T18:45:00+05:30').getTime();
-  let lastSecs = null;
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -286,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.4;
       const distance = Math.random() * 90 + 40;
       const tx = Math.cos(angle) * distance;
-      const ty = Math.sin(angle) * distance - 25; // drift upward slightly
+      const ty = Math.sin(angle) * distance - 25;
 
       particle.style.left = `${originX}px`;
       particle.style.top = `${originY}px`;
