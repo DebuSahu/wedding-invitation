@@ -1,11 +1,18 @@
 /**
- * Authentic Royal Shehnai Audio Engine
- * Plays authentic high-fidelity Shehnai instrumental (Ustad Bismillah Khan - Raga Pahadi)
- * with graceful unlock on first user interaction and temple bell sound effects.
+ * Festive Royal Indian Wedding Audio Engine
+ * Features playlist of joyful wedding melodies:
+ * 1. "Raja Ki Aayegi Barat" (Festive Wedding Melody)
+ * 2. "Tere Sur Aur Mere Geet" (Shehnai & Sitar Harmony)
+ * With graceful unlock on first user interaction and temple bell sound effects.
  */
 
 class ShehnaiAudioEngine {
   constructor() {
+    this.tracks = [
+      { name: 'Raja Ki Aayegi Barat', src: 'assets/audio/shehnai.mp3' },
+      { name: 'Tere Sur Aur Mere Geet', src: 'assets/audio/shehnai_bihag.mp3' }
+    ];
+    this.currentTrackIndex = 0;
     this.audio = null;
     this.isPlaying = false;
     this.onStateChange = null;
@@ -14,28 +21,35 @@ class ShehnaiAudioEngine {
 
   initAudio() {
     try {
-      this.audio = new Audio('assets/audio/shehnai.mp3');
+      if (this.audio) {
+        this.audio.pause();
+      }
+      const track = this.tracks[this.currentTrackIndex];
+      this.audio = new Audio(track.src);
       this.audio.loop = true;
-      this.audio.volume = 0.75;
+      this.audio.volume = 0.8;
       this.audio.preload = 'auto';
 
       this.audio.addEventListener('play', () => {
         this.isPlaying = true;
-        if (this.onStateChange) this.onStateChange(true);
+        if (this.onStateChange) this.onStateChange(true, track.name);
       });
 
       this.audio.addEventListener('pause', () => {
         this.isPlaying = false;
-        if (this.onStateChange) this.onStateChange(false);
+        if (this.onStateChange) this.onStateChange(false, track.name);
       });
 
       this.audio.addEventListener('ended', () => {
-        this.isPlaying = false;
-        if (this.onStateChange) this.onStateChange(false);
+        this.nextTrack();
       });
     } catch (e) {
       console.warn('Audio element initialization error:', e);
     }
+  }
+
+  getCurrentTrackName() {
+    return this.tracks[this.currentTrackIndex].name;
   }
 
   play() {
@@ -47,7 +61,7 @@ class ShehnaiAudioEngine {
       playPromise
         .then(() => {
           this.isPlaying = true;
-          if (this.onStateChange) this.onStateChange(true);
+          if (this.onStateChange) this.onStateChange(true, this.getCurrentTrackName());
         })
         .catch(err => {
           console.log('Audio autoplay prevented or waiting for user gesture:', err);
@@ -59,7 +73,7 @@ class ShehnaiAudioEngine {
     if (this.audio) {
       this.audio.pause();
       this.isPlaying = false;
-      if (this.onStateChange) this.onStateChange(false);
+      if (this.onStateChange) this.onStateChange(false, this.getCurrentTrackName());
     }
   }
 
@@ -69,6 +83,18 @@ class ShehnaiAudioEngine {
     } else {
       this.play();
     }
+  }
+
+  nextTrack() {
+    this.currentTrackIndex = (this.currentTrackIndex + 1) % this.tracks.length;
+    const wasPlaying = this.isPlaying;
+    this.initAudio();
+    if (wasPlaying) {
+      this.play();
+    } else {
+      if (this.onStateChange) this.onStateChange(false, this.getCurrentTrackName());
+    }
+    return this.getCurrentTrackName();
   }
 
   // Resonant Temple Brass Bell Chime (for Diya blessing)
@@ -82,7 +108,6 @@ class ShehnaiAudioEngine {
       }
 
       const now = ctx.currentTime;
-      // Dual brass bell harmonics
       [784, 1176, 1568, 2352].forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();

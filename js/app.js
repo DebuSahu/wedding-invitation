@@ -105,17 +105,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
-  function updateMusicUI(isPlaying) {
+  const switchMusicBtn = document.getElementById('switchMusicBtn');
+
+  function updateMusicUI(isPlaying, trackName) {
     if (!musicBtn) return;
+    const name = trackName || (window.shehnaiEngine ? window.shehnaiEngine.getCurrentTrackName() : 'Music');
     if (isPlaying) {
       musicBtn.classList.add('playing');
-      if (musicStatus) musicStatus.textContent = 'Shehnai Playing 🎵';
+      if (musicStatus) musicStatus.textContent = `${name} 🎵`;
       if (!musicNotesTimer) {
         musicNotesTimer = setInterval(spawnMusicNote, 1200);
       }
     } else {
       musicBtn.classList.remove('playing');
-      if (musicStatus) musicStatus.textContent = 'Play Shehnai 🎶';
+      if (musicStatus) musicStatus.textContent = `Play: ${name} 🎶`;
       if (musicNotesTimer) {
         clearInterval(musicNotesTimer);
         musicNotesTimer = null;
@@ -129,6 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
       window.shehnaiEngine.togglePlay();
     });
     window.shehnaiEngine.onStateChange = updateMusicUI;
+  }
+
+  if (switchMusicBtn && window.shehnaiEngine) {
+    switchMusicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nextName = window.shehnaiEngine.nextTrack();
+      showToast(`🎶 Playing: ${nextName}`);
+    });
   }
 
   // 3. LIVE COUNTDOWN TO SHUBH HASTAMELAP MUHURAT (2 FEB 2027, 18:45 IST)
