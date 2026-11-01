@@ -1,16 +1,16 @@
 /**
- * Festive Royal Indian Wedding Audio Engine
- * Features playlist of joyful wedding melodies:
- * 1. "Raja Ki Aayegi Barat" (Festive Wedding Melody)
- * 2. "Tere Sur Aur Mere Geet" (Shehnai & Sitar Harmony)
- * With graceful unlock on first user interaction and temple bell sound effects.
+ * Royal Indian Wedding Audio Engine
+ * Plays the user's selected song:
+ * "Chhote Chhote Bhaiyon Ke Bade Bhaiya" (from YouTube Short: https://youtube.com/shorts/e6id-ngBafI)
+ * Includes full track and playlist switcher with temple bell chime.
  */
 
 class ShehnaiAudioEngine {
   constructor() {
     this.tracks = [
-      { name: 'Raja Ki Aayegi Barat', src: 'assets/audio/shehnai.mp3' },
-      { name: 'Tere Sur Aur Mere Geet', src: 'assets/audio/shehnai_bihag.mp3' }
+      { name: 'Chhote Chhote Bhaiyon Ke Bade Bhaiya', src: 'assets/audio/chhote_chhote_bhaiya.mp3' },
+      { name: 'Chhote Chhote Bhaiya (Full Song)', src: 'assets/audio/chhote_chhote_bhaiya_full.mp3' },
+      { name: 'Raja Ki Aayegi Barat', src: 'assets/audio/raja_ki_aayegi_barat.mp3' }
     ];
     this.currentTrackIndex = 0;
     this.audio = null;
@@ -27,7 +27,7 @@ class ShehnaiAudioEngine {
       const track = this.tracks[this.currentTrackIndex];
       this.audio = new Audio(track.src);
       this.audio.loop = true;
-      this.audio.volume = 0.8;
+      this.audio.volume = 0.85;
       this.audio.preload = 'auto';
 
       this.audio.addEventListener('play', () => {
@@ -64,7 +64,7 @@ class ShehnaiAudioEngine {
           if (this.onStateChange) this.onStateChange(true, this.getCurrentTrackName());
         })
         .catch(err => {
-          console.log('Audio autoplay prevented or waiting for user gesture:', err);
+          console.log('Audio autoplay waiting for user gesture:', err);
         });
     }
   }
