@@ -1,6 +1,8 @@
 # 👑 The Royal Hindu Wedding Invitation Web Experience
 ### *Divyanshu & Sapna • Shubh Vivaha Patrika*
 
+🌟 **Live Website**: [https://debusahu.github.io/wedding-invitation/](https://debusahu.github.io/wedding-invitation/)
+
 An opulent, culturally authentic, and interactive Royal Hindu Wedding Invitation web application designed for the wedding celebration of **Divyanshu Sahu & Sapna Kushwaha**.
 
 ---

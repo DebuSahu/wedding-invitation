@@ -369,7 +369,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 9. WHATSAPP INVITATION SHARE
   const whatsappShareBtns = document.querySelectorAll('.share-whatsapp-btn');
-  const pageUrl = window.location.href;
+  const liveUrl = 'https://debusahu.github.io/wedding-invitation/';
+  const pageUrl = (window.location.protocol.startsWith('http') && !window.location.hostname.includes('localhost')) 
+    ? window.location.href 
+    : liveUrl;
   const waText = `✨ *Royal Wedding Invitation* ✨\n\nWith the divine blessings of Lord Ganesha, you are cordially invited to celebrate the holy matrimony of:\n\n👑 *Divyanshu & Sapna* 👑\n\n(Son of Smt. Savita Sahu & Shri Om Prakash Sahu)\n(Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha)\n\n💍 *Shubh Vivaha:* 2nd February 2027\n📍 *Wedding Venue:* Gulmohar Guest House, Prayagraj\n\n👑 *Grand Reception:* 5th February 2027\n📍 *Reception Venue:* Hotel Surya Galaxy, Shuklaganj, Unnao\n\nView the complete digital Vivaha Patrika & itinerary here:\n${pageUrl}`;
 
   whatsappShareBtns.forEach(btn => {
