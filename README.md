@@ -41,3 +41,4 @@ A luxurious, modern, and mobile-first Hindu wedding invitation web application c
 - **JavaScript (ES6+):** Web Audio API acoustic synthesis, dynamic DOM manipulation, calendar `.ics` generation.
 - **Vector Graphics:** Custom SVGs for Lord Ganesha, Sacred Kalash, and Brass Diya.
 - **Hosting:** GitHub Pages.
+

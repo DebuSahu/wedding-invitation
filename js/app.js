@@ -1,10 +1,10 @@
 /**
- * Modern Royal Hindu Wedding Invitation - Mobile-First App
- * Divyanshu & Sapna
+ * The Royal Hindu Wedding Invitation - Divyanshu & Sapna
+ * February 2027
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. SHEHNAI MUSIC CONTROLLER
+  // 1. AUTHENTIC SHEHNAI MUSIC CONTROLLER
   const musicBtn = document.getElementById('musicToggleBtn');
   const musicStatus = document.getElementById('musicStatusText');
 
@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!musicBtn) return;
     if (isPlaying) {
       musicBtn.classList.add('playing');
-      if (musicStatus) musicStatus.textContent = 'Shehnai On';
+      if (musicStatus) musicStatus.textContent = 'Shehnai Playing 🎵';
     } else {
       musicBtn.classList.remove('playing');
-      if (musicStatus) musicStatus.textContent = 'Play Shehnai';
+      if (musicStatus) musicStatus.textContent = 'Play Shehnai 🎶';
     }
   }
 
@@ -27,21 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.shehnaiEngine.onStateChange = updateMusicUI;
   }
 
-  // Auto-unlock Web Audio on first user interaction anywhere on mobile
+  // Gracefully auto-unlock audio on first touch/click anywhere on page
   let audioUnlocked = false;
-  function unlockAudioOnFirstTouch() {
+  function unlockAudioOnFirstInteraction() {
     if (audioUnlocked) return;
     audioUnlocked = true;
     if (window.shehnaiEngine && !window.shehnaiEngine.isPlaying) {
       window.shehnaiEngine.play();
     }
-    window.removeEventListener('click', unlockAudioOnFirstTouch);
-    window.removeEventListener('touchstart', unlockAudioOnFirstTouch);
+    window.removeEventListener('click', unlockAudioOnFirstInteraction);
+    window.removeEventListener('touchstart', unlockAudioOnFirstInteraction);
   }
-  window.addEventListener('click', unlockAudioOnFirstTouch, { once: true });
-  window.addEventListener('touchstart', unlockAudioOnFirstTouch, { once: true });
+  window.addEventListener('click', unlockAudioOnFirstInteraction, { once: true });
+  window.addEventListener('touchstart', unlockAudioOnFirstInteraction, { once: true });
 
-  // 2. LIVE COUNTDOWN TO SHUBH MUHURAT (2 FEB 2027, 18:45 IST)
+  // 2. LIVE COUNTDOWN TO SHUBH HASTAMELAP MUHURAT (2 FEB 2027, 18:45 IST)
   const weddingDate = new Date('2027-02-02T18:45:00+05:30').getTime();
 
   function updateCountdown() {
@@ -125,49 +125,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. SAAT PHERE (SAPTAPADI) INTERACTIVE STORY CARDS
+  // 4. SAPTAPADI (SAAT PHERE) SACRED VOWS CAROUSEL
   const saatPhereData = [
     {
       num: 1,
       sanskrit: '॥ ॐ एकमिषे विष्णुस्त्वान्वेतु ॥',
-      title: 'First Vow: Nourishment & Well-Being',
-      meaning: 'We pray together for an abundance of pure sustenance, mutual health, and virtuous living in peace.'
+      title: 'First Vow: Nourishment & Health',
+      meaning: 'Together we pray for pure sustenance, wholesome living, and spiritual vitality for our shared life.'
     },
     {
       num: 2,
       sanskrit: '॥ ॐ द्वे ऊर्जे विष्णुस्त्वान्वेतु ॥',
-      title: 'Second Vow: Strength & Resilience',
-      meaning: 'We vow to be each other’s pillar of emotional, mental, and physical strength through every season of life.'
+      title: 'Second Vow: Strength & Courage',
+      meaning: 'We promise to be each other’s steadfast pillar of emotional, mental, and physical strength through all seasons.'
     },
     {
       num: 3,
       sanskrit: '॥ ॐ त्रीणि रायस्पोषाय विष्णुस्त्वान्वेतु ॥',
       title: 'Third Vow: Prosperity & Dharma',
-      meaning: 'We promise to nurture righteous wealth, share responsibilities, and create harmony in our family.'
+      meaning: 'We vow to earn righteous wealth, fulfill our moral duties, and bring honor and happiness to both our families.'
     },
     {
       num: 4,
       sanskrit: '॥ ॐ चत्वारि मायोभवाय विष्णुस्त्वान्वेतु ॥',
       title: 'Fourth Vow: Family & Mutual Devotion',
-      meaning: 'We pledge to shower devotion and joy upon both families, honoring our parents and cherishing eternal love.'
+      meaning: 'We pledge unconditional love, respect, and gratitude to our parents, family elders, and each other.'
     },
     {
       num: 5,
       sanskrit: '॥ ॐ पञ्च प्रजाभ्यः संभूताय विष्णुस्त्वान्वेतु ॥',
-      title: 'Fifth Vow: Noble Lineage & Happiness',
-      meaning: 'We pray for noble values, guiding light, and blessings upon future generations with kindness and grace.'
+      title: 'Fifth Vow: Noble Virtues & Wisdom',
+      meaning: 'We pray for wisdom, compassion, and noble ideals to illuminate our home and future generations.'
     },
     {
       num: 6,
       sanskrit: '॥ ॐ षड् ऋतुभ्यः विष्णुस्त्वान्वेतु ॥',
       title: 'Sixth Vow: Lifelong Companionship',
-      meaning: 'We seek long life, uninterrupted joy, and steadfast support for one another through every season.'
+      meaning: 'May our hearts beat as one through every turning season of life, bound by eternal peace and mutual trust.'
     },
     {
       num: 7,
       sanskrit: '॥ ॐ सखे सप्तपदा भव ॥',
-      title: 'Seventh Vow: Eternal Friendship & Unity',
-      meaning: 'Two souls unite as one in sacred friendship, eternal trust, and unwavering spiritual devotion forever.'
+      title: 'Seventh Vow: Eternal Spiritual Union',
+      meaning: 'Two souls unite into one eternal friendship and spiritual companionship forever under the holy Agni.'
     }
   ];
 
@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function showPhera(idx) {
       const data = saatPhereData[idx];
       pheraCard.innerHTML = `
-        <div class="phera-sanskrit">${data.sanskrit}</div>
-        <h3 class="phera-title">${data.title}</h3>
-        <p class="phera-desc">${data.meaning}</p>
+        <div class="phera-sanskrit-shloka">${data.sanskrit}</div>
+        <div class="phera-vow-title">${data.title}</div>
+        <p class="phera-vow-meaning">${data.meaning}</p>
       `;
 
       pheraTabs.querySelectorAll('.phera-step-btn').forEach((b, i) => {
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
     showPhera(0);
   }
 
-  // 5. LIGHT A DIYA BLESSING CEREMONY
+  // 5. MANGAL DEEP CEREMONY (LIGHT A DIYA)
   const diyaBtn = document.getElementById('lightDiyaBtn');
   const diyaCountEl = document.getElementById('diyaCount');
 
-  let diyasLit = parseInt(localStorage.getItem('diyas_divyanshu_sapna') || '1428', 10);
+  let diyasLit = parseInt(localStorage.getItem('diyas_divyanshu_sapna') || '1540', 10);
   if (diyaCountEl) diyaCountEl.textContent = diyasLit.toLocaleString();
 
   if (diyaBtn) {
@@ -217,26 +217,26 @@ document.addEventListener('DOMContentLoaded', () => {
         window.shehnaiEngine.playTempleChime();
       }
 
-      showToast('✨ शुभ आशीर्वाद! Your Diya has been lit with love & prayers.');
+      showToast('✨ शुभ आशीर्वाद! Your Diya has been lit with divine blessings.');
     });
   }
 
-  // 6. RSVP & WALL OF BLESSINGS (GUESTBOOK)
+  // 6. RSVP & WALL OF BLESSINGS
   const defaultWishes = [
     {
       name: 'Dadaji & Dadiji (Sahu Pariwar)',
       city: 'Prayagraj',
-      message: 'सदा सुहागन रहो! May Mahadev and Maa Parvati bless Divyanshu and Sapna with eternal love and prosperity!'
+      message: 'सदा सुहागन रहो! May Mahadev and Maa Parvati shower Divyanshu and Sapna with endless joy, love, and prosperity!'
     },
     {
       name: 'Kushwaha Pariwar',
       city: 'Unnao',
-      message: 'Heartiest congratulations to Sapna and Divyanshu! Excited to celebrate the Sangeet, Wedding and Reception!'
+      message: 'Heartiest congratulations to our dearest Sapna & Divyanshu! Eagerly awaiting the celebrations at Gulmohar and Hotel Surya Galaxy!'
     },
     {
       name: 'Friends & Family',
       city: 'Kanpur / Lucknow',
-      message: 'Looking forward to celebrating this beautiful union at Gulmohar Guest House and Hotel Surya Galaxy!'
+      message: 'Excited to dance at the Royal Black Sangeet and celebrate the grand wedding pheras!'
     }
   ];
 
@@ -248,13 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
     wishesList.innerHTML = '';
     wishes.forEach(item => {
       const card = document.createElement('div');
-      card.className = 'wish-item';
+      card.className = 'single-wish-card';
       card.innerHTML = `
-        <div class="wish-header">
+        <div class="single-wish-head">
           <strong>${escapeHtml(item.name)}</strong>
-          <span class="wish-city">${escapeHtml(item.city || 'Honored Guest')}</span>
+          <span class="single-wish-city">${escapeHtml(item.city || 'Honored Guest')}</span>
         </div>
-        <p class="wish-msg">"${escapeHtml(item.message)}"</p>
+        <p class="single-wish-message">"${escapeHtml(item.message)}"</p>
       `;
       wishesList.appendChild(card);
     });
@@ -268,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('rsvpName').value.trim();
       const city = document.getElementById('rsvpCity').value.trim();
-      const attending = document.querySelector('input[name="attending"]:checked')?.value || 'Attending';
       const count = document.getElementById('rsvpCount').value;
       const msg = document.getElementById('rsvpMsg').value.trim();
 
@@ -284,15 +283,15 @@ document.addEventListener('DOMContentLoaded', () => {
         renderWishes();
       }
 
-      showToast(`💐 Dhanyawad ${name}! Your RSVP has been graciously confirmed.`);
+      showToast(`💐 Dhanyawad ${name}! Your RSVP has been confirmed with joy.`);
       rsvpForm.reset();
     });
   }
 
-  // 7. WHATSAPP INVITATION SHARE
+  // 7. DIRECT WHATSAPP INVITATION SHARE
   const waBtns = document.querySelectorAll('.share-wa-btn');
   const liveUrl = 'https://debusahu.github.io/wedding-invitation/';
-  const waMsg = `✨ *Royal Wedding Invitation* ✨\n\nWith the divine blessings of Lord Ganesha, you are cordially invited to celebrate the holy matrimony of:\n\n👑 *Divyanshu & Sapna* 👑\n\n(Son of Smt. Savita Sahu & Shri Om Prakash Sahu)\n(Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha)\n\n💍 *Wedding:* 2nd February 2027\n📍 *Venue:* Gulmohar Guest House, Prayagraj\n\n👑 *Grand Reception:* 5th February 2027\n📍 *Venue:* Hotel Surya Galaxy, Shuklaganj, Unnao\n\nView the digital Vivaha Patrika here:\n${liveUrl}`;
+  const waMsg = `✨ *The Royal Wedding Invitation* ✨\n\nWith the divine blessings of Lord Ganesha, you are cordially invited to celebrate the holy matrimony of:\n\n👑 *Divyanshu & Sapna* 👑\n\n(Son of Smt. Savita Sahu & Shri Om Prakash Sahu)\n(Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha)\n\n💍 *Shubh Vivah:* 2nd February 2027\n📍 *Venue:* Gulmohar Guest House, Prayagraj\n\n👑 *Grand Reception:* 5th February 2027\n📍 *Venue:* Hotel Surya Galaxy, Shuklaganj, Unnao\n\nView the complete royal Vivaha Patrika & itinerary:\n${liveUrl}`;
 
   waBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
