@@ -1,21 +1,80 @@
 /**
  * The Royal Hindu Wedding Invitation - Divyanshu & Sapna
  * February 2027
+ * Enhanced with Dynamic Animations & Interactive Experiences
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. AUTHENTIC SHEHNAI MUSIC CONTROLLER
+  // 1. SCROLL-REVEAL INTERSECTION OBSERVER (BUTTERY 60FPS)
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.getAttribute('data-delay') || 0;
+            setTimeout(() => {
+              entry.target.classList.add('is-revealed');
+            }, parseInt(delay, 10));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+  }
+
+  // 2. AUTHENTIC SHEHNAI MUSIC CONTROLLER & FLOATING NOTES
   const musicBtn = document.getElementById('musicToggleBtn');
   const musicStatus = document.getElementById('musicStatusText');
+  let musicNotesTimer = null;
+
+  function spawnMusicNote() {
+    if (!musicBtn) return;
+    const notes = ['♪', '♫', '♩', '♬', '✦'];
+    const noteEl = document.createElement('span');
+    noteEl.className = 'music-note-particle';
+    noteEl.textContent = notes[Math.floor(Math.random() * notes.length)];
+
+    const rect = musicBtn.getBoundingClientRect();
+    const startX = rect.left + rect.width / 2 + (Math.random() * 20 - 10);
+    const startY = rect.top + rect.height / 2;
+
+    noteEl.style.left = `${startX}px`;
+    noteEl.style.top = `${startY}px`;
+    document.body.appendChild(noteEl);
+
+    setTimeout(() => {
+      if (noteEl.parentNode) {
+        noteEl.parentNode.removeChild(noteEl);
+      }
+    }, 2000);
+  }
 
   function updateMusicUI(isPlaying) {
     if (!musicBtn) return;
     if (isPlaying) {
       musicBtn.classList.add('playing');
       if (musicStatus) musicStatus.textContent = 'Shehnai Playing 🎵';
+      if (!musicNotesTimer) {
+        musicNotesTimer = setInterval(spawnMusicNote, 1200);
+      }
     } else {
       musicBtn.classList.remove('playing');
       if (musicStatus) musicStatus.textContent = 'Play Shehnai 🎶';
+      if (musicNotesTimer) {
+        clearInterval(musicNotesTimer);
+        musicNotesTimer = null;
+      }
     }
   }
 
@@ -27,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.shehnaiEngine.onStateChange = updateMusicUI;
   }
 
-  // Gracefully auto-unlock audio on first touch/click anywhere on page
+  // Auto-unlock audio on first touch/click
   let audioUnlocked = false;
   function unlockAudioOnFirstInteraction() {
     if (audioUnlocked) return;
@@ -41,8 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('click', unlockAudioOnFirstInteraction, { once: true });
   window.addEventListener('touchstart', unlockAudioOnFirstInteraction, { once: true });
 
-  // 2. LIVE COUNTDOWN TO SHUBH HASTAMELAP MUHURAT (2 FEB 2027, 18:45 IST)
+  // 3. LIVE COUNTDOWN TO SHUBH HASTAMELAP MUHURAT (2 FEB 2027, 18:45 IST)
   const weddingDate = new Date('2027-02-02T18:45:00+05:30').getTime();
+  let lastSecs = null;
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -71,13 +131,19 @@ document.addEventListener('DOMContentLoaded', () => {
     dEl.textContent = String(days).padStart(2, '0');
     hEl.textContent = String(hours).padStart(2, '0');
     mEl.textContent = String(mins).padStart(2, '0');
-    sEl.textContent = String(secs).padStart(2, '0');
+
+    const formattedSecs = String(secs).padStart(2, '0');
+    if (sEl.textContent !== formattedSecs) {
+      sEl.textContent = formattedSecs;
+      sEl.classList.add('tick-pulse');
+      setTimeout(() => sEl.classList.remove('tick-pulse'), 300);
+    }
   }
 
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // 3. CALENDAR GENERATION (Google Calendar & iCal)
+  // 4. CALENDAR GENERATION (Google Calendar & iCal)
   const gcalBtn = document.getElementById('addToGCalBtn');
   const icsBtn = document.getElementById('downloadIcsBtn');
 
@@ -125,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. SAPTAPADI (SAAT PHERE) SACRED VOWS CAROUSEL
+  // 5. SAPTAPADI (SAAT PHERE) SACRED VOWS CAROUSEL
   const saatPhereData = [
     {
       num: 1,
@@ -177,6 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pheraTabs && pheraCard) {
     function showPhera(idx) {
       const data = saatPhereData[idx];
+      pheraCard.style.animation = 'none';
+      pheraCard.offsetHeight; // trigger reflow
+      pheraCard.style.animation = 'pheraFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+
       pheraCard.innerHTML = `
         <div class="phera-sanskrit-shloka">${data.sanskrit}</div>
         <div class="phera-vow-title">${data.title}</div>
@@ -200,18 +270,49 @@ document.addEventListener('DOMContentLoaded', () => {
     showPhera(0);
   }
 
-  // 5. MANGAL DEEP CEREMONY (LIGHT A DIYA)
+  // 6. MANGAL DEEP CEREMONY WITH GOLDEN PARTICLE BURST
   const diyaBtn = document.getElementById('lightDiyaBtn');
   const diyaCountEl = document.getElementById('diyaCount');
 
   let diyasLit = parseInt(localStorage.getItem('diyas_divyanshu_sapna') || '1540', 10);
   if (diyaCountEl) diyaCountEl.textContent = diyasLit.toLocaleString();
 
+  function triggerDiyaSparkleBurst(originX, originY) {
+    const burstCount = 28;
+    for (let i = 0; i < burstCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'diya-sparkle-particle';
+
+      const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.4;
+      const distance = Math.random() * 90 + 40;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance - 25; // drift upward slightly
+
+      particle.style.left = `${originX}px`;
+      particle.style.top = `${originY}px`;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        if (particle.parentNode) {
+          particle.parentNode.removeChild(particle);
+        }
+      }, 1500);
+    }
+  }
+
   if (diyaBtn) {
-    diyaBtn.addEventListener('click', () => {
+    diyaBtn.addEventListener('click', (e) => {
       diyasLit += 1;
       localStorage.setItem('diyas_divyanshu_sapna', diyasLit);
       if (diyaCountEl) diyaCountEl.textContent = diyasLit.toLocaleString();
+
+      const rect = diyaBtn.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      triggerDiyaSparkleBurst(originX, originY);
 
       if (window.shehnaiEngine) {
         window.shehnaiEngine.playTempleChime();
@@ -221,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. RSVP & WALL OF BLESSINGS
+  // 7. RSVP & WALL OF BLESSINGS
   const defaultWishes = [
     {
       name: 'Dadaji & Dadiji (Sahu Pariwar)',
@@ -268,7 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('rsvpName').value.trim();
       const city = document.getElementById('rsvpCity').value.trim();
-      const count = document.getElementById('rsvpCount').value;
       const msg = document.getElementById('rsvpMsg').value.trim();
 
       if (!name) return;
@@ -288,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. DIRECT WHATSAPP INVITATION SHARE
+  // 8. DIRECT WHATSAPP INVITATION SHARE
   const waBtns = document.querySelectorAll('.share-wa-btn');
   const liveUrl = 'https://debusahu.github.io/wedding-invitation/';
   const waMsg = `✨ *The Royal Wedding Invitation* ✨\n\nWith the divine blessings of Lord Ganesha, you are cordially invited to celebrate the holy matrimony of:\n\n👑 *Divyanshu & Sapna* 👑\n\n(Son of Smt. Savita Sahu & Shri Om Prakash Sahu)\n(Daughter of Ms. Kiran Kushwaha & Late Ramesh Kushwaha)\n\n💍 *Shubh Vivah:* 2nd February 2027\n📍 *Venue:* Gulmohar Guest House, Prayagraj\n\n👑 *Grand Reception:* 5th February 2027\n📍 *Venue:* Hotel Surya Galaxy, Shuklaganj, Unnao\n\nView the complete royal Vivaha Patrika & itinerary:\n${liveUrl}`;
@@ -300,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 8. TOAST NOTIFICATION HELPER
+  // 9. TOAST NOTIFICATION HELPER
   function showToast(text) {
     let toast = document.getElementById('appToast');
     if (!toast) {
